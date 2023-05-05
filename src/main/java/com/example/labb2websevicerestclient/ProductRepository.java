@@ -52,7 +52,7 @@ public class ProductRepository {
 
     }
 
-    public List<Product> getAllProducts() {
+    private List<Product> getAllProducts() {
         Flux<Product> f = webClient
                 .get()
                 .uri("allproducts")
@@ -61,7 +61,7 @@ public class ProductRepository {
         return f.collectList().block();
     }
 
-    public boolean addProduct(Product p) {
+    private boolean addProduct(Product p) {
         try {
             Mono<String> m = webClient
                     .post()
@@ -77,7 +77,7 @@ public class ProductRepository {
         }
     }
 
-    public void readingProductFromUser() {
+    private void readingProductFromUser() {
         Category category = null;
        while (true) {
            try {
@@ -100,7 +100,7 @@ public class ProductRepository {
         }
     }
 
-    public boolean updatePrice(long id, double price) {
+    private boolean updatePrice(long id, double price) {
         try {
             Mono<String> m = webClient
                     .put()
@@ -115,7 +115,7 @@ public class ProductRepository {
         }
     }
 
-    public void readingUpdatedPriceFromUser() {
+    private void readingUpdatedPriceFromUser() {
         System.out.println("Välj id på produkten du vill uppdatera priset på");
         long id = scanner.nextLong();
         scanner.nextLine();
@@ -130,7 +130,7 @@ public class ProductRepository {
 
     }
 
-    public boolean removeProduct(long id){
+    private boolean removeProduct(long id){
         try {
             Mono<String> m = webClient
                     .delete()
@@ -144,7 +144,7 @@ public class ProductRepository {
         }
     }
 
-    public void readingProductToRemoveFromUser() {
+    private void readingProductToRemoveFromUser() {
         System.out.println("Skriv in id för product du vill radera");
         long id = scanner.nextLong();
         scanner.nextLine();
