@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @Repository
@@ -14,7 +15,6 @@ public class ProductRepository {
 
     WebClient webClient = WebClient.create("http://localhost:8080/rest/");
     Scanner scanner = new Scanner(System.in);
-
     public void menu() {
         int choice;
         while (true) {
@@ -27,25 +27,18 @@ public class ProductRepository {
             scanner.nextLine();
 
             switch (choice) {
-                case 1:
+                case 1 -> {
                     List<Product> products = getAllProducts();
                     System.out.println(products);
-                    break;
-                case 2:
-                    readingProductFromUser();
-                    break;
-                case 3:
-                    readingUpdatedPriceFromUser();
-                    break;
-                case 4:
-                    readingProductToRemoveFromUser();
-                    break;
-                case 5:
+                }
+                case 2 -> readingProductFromUser();
+                case 3 -> readingUpdatedPriceFromUser();
+                case 4 -> readingProductToRemoveFromUser();
+                case 5 -> {
                     System.out.println("Avslutar!");
                     System.exit(0);
-                default:
-                    System.out.println("Det är inkorrekt val! Välj igen!");
-
+                }
+                default -> System.out.println("Det är inkorrekt val! Välj igen!");
             }
         }
 
