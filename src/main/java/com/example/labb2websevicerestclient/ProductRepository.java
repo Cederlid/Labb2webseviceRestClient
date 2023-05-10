@@ -7,7 +7,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 @Repository
@@ -66,6 +65,7 @@ public class ProductRepository {
             m.block();
             return true;
         } catch (Exception e) {
+            System.out.println(e);
             return false;
         }
     }

@@ -2,7 +2,6 @@ package com.example.labb2websevicerestclient;
 
 public class Product {
 
-
         private Long id;
         private String name;
 
@@ -22,7 +21,35 @@ public class Product {
             return name;
         }
 
-        @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
         public String toString() {
             return "Id: " + id +
                     ", produkt: " + name +
